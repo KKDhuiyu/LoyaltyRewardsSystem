@@ -1,0 +1,64 @@
+@import url("forms.css");  /* import forms layout */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
+
+body {
+	background: rgb(60,60,60);
+	font-family: 'Open Sans', sans-serif;	
+	font-size: 12pt;
+}
+
+
+
+h1 {
+	background: black;
+	color: white;
+	padding: 5px;
+	margin-left:-20px;
+	margin-right:-20px;
+	text-align: center;
+}
+
+#content {
+	border-width: 7px;
+	border-style:solid;
+	border-color:black;
+	border-radius: 25px 25px 25px 25px;
+	box-shadow: 5px 5px 15px #000;   
+	background:rgb(210,210,210);
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:50px;
+	padding: 20px;
+	width:900px;
+	max-width:900px;
+}
+
+
+/* fieldset fonts/colors/margins */
+
+fieldset {
+	border-color:silver;
+	background:rgb(200,200,200);
+	margin:auto;
+}
+
+/* bold labels/legends */
+label, legend {
+	font-weight: 800;
+}
+
+
+/* make input components change color when focused */
+input[type="text"]:hover, textarea:hover, select:hover, input[type="password"]:hover, button:hover,
+input[type="text"]:focus, textarea:focus, select:focus, input[type="password"]:focus, button:focus {
+	background-color:#ffff99;
+	border-color:#999999;
+}
+
+/* class for things that should fill their containers */
+.fullwidth {
+	display: block;
+	margin:auto;
+	width:100%;
+}

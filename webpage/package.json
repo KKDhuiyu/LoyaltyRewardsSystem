@@ -1,0 +1,8 @@
+{
+	"name": "webpage",
+	"version": "1.0.0",
+	"keywords": ["util", "functional", "server", "client", "browser"],
+	"author": "jiahu599",
+	"contributors": [],
+	"dependencies": {}
+}

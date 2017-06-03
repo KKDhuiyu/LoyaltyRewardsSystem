@@ -1,0 +1,113 @@
+/*
+
+Two column form layout, with right aligned labels.
+
+Uses flexible boxes, so should should dynamically resize with label content
+within reason.
+
+This has been tested with:
+    - Firefox 31
+    - IE 11
+    - Chrome 38
+
+The HTML to use this layout should use the following structure:
+
+<form>
+	<fieldset>
+
+		<legend>legend</legend>
+
+		<div class="flexiform">
+
+			<div class="formlabels">
+				<label>ID:</label>
+				<label>Name:</label>
+				<label class="textarea">Description:</label>
+			</div>
+
+			<div class="formfields">
+				<input type="text" value="ID" />
+				<input type="text" value="Name" />
+				<textarea>Description</textarea>
+			</div>
+
+		</div>
+
+		<div class="buttongroup">
+			<button type="button">Button 1</button>
+			<button type="button">Button 2</button>
+		</div>
+
+	</fieldset>
+</form>
+
+
+Author:  Mark George <mark.george@otago.ac.nz>
+License: WTFPL
+
+*/
+
+/* use a known font so the layout is platform-consistent */
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+
+/* use same font for labels and input so things line up nicely */
+label, input, textarea, select, legend {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 400;
+	font-size: 12pt;
+}
+
+/* overall size of the forms */
+fieldset {
+	width:700;
+}
+
+/* two column, single row, outer flexi-layout*/
+.flexiform {
+	display: flex;
+	flex-direction: row;
+}
+
+/* single-column, multi-row, inner flexis */
+.formlabels, .formfields {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;  /* common justification to ensure things line up */
+	flex-basis: auto;  /* grow and shrink as necessary */
+}
+
+.formlabels {
+	order: 1;  /* labels are in the first column */ 
+}
+
+.formfields {
+	order: 2;      /* fields are in the second column */
+	flex-grow: 1;  /* fields can grow if necessary */
+}			
+
+/* add some spacing between rows */
+label, input, textarea, select {
+	margin-bottom: 5px;
+}
+
+/* multirow text areas are a problem, so we need a known size */
+label.textarea, textarea {
+	height: 100px;
+}
+
+/* match label size to textarea size (with a slight offset to realign things) */
+label.textarea {
+	height: 95px;
+}
+
+.formlabels label {
+	white-space:nowrap;  /* don't let labels wrap */
+	text-align: right;   /* labels are right aligned */
+	margin-right: 5px;   /* add gap between labels and fields */
+}
+
+.buttongroup {
+	margin-top: 5px;     /* add a gap between the form and buttons */
+	text-align: center;  /* center buttons in form */
+}
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="CustomersModule">
+
+	<head>
+
+		<title>Loyalty Service</title>
+
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<script src="scripts/angular.min.js"></script>
+		<script src="scripts/angular-resource.min.js"></script>
+		<script src="scripts/JsBarcode.all.min.js"></script>
+		<script src="scripts/JsBarcode.all.js"></script>
+		<script src="scripts/inventory.js">
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="content" ng-controller="CustomerController">
+
+			<h1>Loyalty Service</h1>
+
+			<form action="#">
+				<fieldset>
+
+					<legend>Login</legend>
+
+					<div class="flexiform">
+
+						<div class="formlabels">
+							<label>Email:</label>
+
+						</div>
+
+						<div class="formfields">
+							<input type="text" id="customer_email"  ng-model="customer_email"/>
+
+						</div>
+
+					</div>
+					<div class="buttongroup">
+						<button type="button" ng-click="login()">login</button>
+					</div>
+
+
+				</fieldset>
+				<fieldset>
+
+					<legend>Your Details</legend>
+
+					<div class="flexiform">
+
+						<div class="formlabels">
+							<label>Rewards ID:</label>
+							<label>Name:</label>
+
+						</div>
+
+						<div class="formfields">
+						<input type="text"  id="customer_id" ng-model="customer.id"/>
+							<input type="text"  id="customer_name" ng-model="customer.name"/>
+
+						</div>
+
+					</div>	
+
+				</fieldset>
+
+
+				<fieldset>
+
+					<legend>Create a Coupon</legend>
+
+					<div class="flexiform">
+
+						<div class="formlabels">
+							<label>Available points:</label>
+							<label>Points to use:</label>					
+							<label>Equivalent to $:</label>
+
+						</div>
+
+						<div class="formfields">
+							<input type="text"  ng-model="available_points"/>
+							<input type="text" id="points_to_use"  ng-model="points_to_use"/>
+							<input type="text" ng-model="eqivalent_price"ng-click="calculatePrice()"/>
+						
+						</div>
+
+					</div>
+
+					<div class="buttongroup">
+						<button type="button" ng-click="createCoupon()">Create</button>
+					</div>
+
+				</fieldset>
+				<fieldset>
+
+					<legend>Coupon</legend>
+
+					<p> Present this barcode when you next time make a purchase</p>
+					<p id="Coupon_Price">$</p>
+				</fieldset>
+			</form>		
+			<img id="barcode"/>
+
+		</div>
+	</body>
+</html>
