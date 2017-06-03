@@ -1,0 +1,59 @@
+<!--
+	Logback logging configuration for Jersey and Camel.
+-->
+<configuration debug="false">
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level %logger - %msg%n %ex{full}</pattern>
+		</encoder>
+
+		<!-- send all except ERROR to stdout -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>DENY</onMatch>
+			<onMismatch>ACCEPT</onMismatch>
+		</filter>
+
+		<target>System.out</target>
+
+	</appender>
+
+	<appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level %logger - %msg%n %ex{full}</pattern>
+		</encoder>
+
+		<!-- send only ERROR to stderr -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+
+		<target>System.err</target>
+
+	</appender>
+
+	<!-- show useful Camel messages -->
+	<logger name="org.apache.camel.processor.interceptor.Tracer" level="info" />
+	<logger name="org.apache.camel.impl.DefaultCamelContext" level="info" />
+
+	<!-- suppress everything except error messages from frameworks -->
+	<logger name="org.apache.camel" level="error" />
+	<logger name="org.springframework" level="error" />
+	<logger name="org.apache.cxf" level="error" />
+	<logger name="org.glassfish.jersey.internal.Errors" level="error" />
+
+	<!-- Jersey -->
+	<logger name="org.glassfish.jersey.server.ApplicationHandler" level="warn" />
+
+	<!-- set default logging level -->
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="STDERR" />
+	</root>
+
+</configuration>

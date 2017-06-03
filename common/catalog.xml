@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/H:/project/Assignment2/Assignment2/common/src/loyalty/domain/Coupon.java" uri="xml-resources/jaxb/jaxb/Coupon.java"/>
+</catalog>
